@@ -23,9 +23,12 @@ const Home: React.FC = () => {
   const [resultado, setResultado] = useState<number | null>(null);
 
   const convertir = () => {
-    const usd = quetzales / 8;
-    setResultado(Number(usd.toFixed(2)));
-  };
+  const input = document.querySelector("#input-quetzales") as HTMLInputElement;
+  const valor = Number(input?.value || 0);
+  const usd = valor / 8;
+  setResultado(Number(usd.toFixed(2)));
+};
+
 
   return (
     <IonPage>
@@ -67,6 +70,7 @@ const Home: React.FC = () => {
               <IonInput
               style={{textAlign: "center",}}
                 type="number"
+                id="input-quetzales"
                 onIonChange={(e) => setQuetzales(Number(e.detail.value))}
               ></IonInput>
             </IonItem>
